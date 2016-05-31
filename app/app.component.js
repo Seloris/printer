@@ -22,8 +22,9 @@ var AppComponent = (function () {
         this.items.push(item);
         this.newTitle = "";
         setTimeout(function () {
-            CkEditorRefresh(item.id);
-        }, 1000);
+            // CkEditorRefresh(item.id);
+            TinyMCERefresh();
+        }, 500);
     };
     AppComponent = __decorate([
         core_1.Component({

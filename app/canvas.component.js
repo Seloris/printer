@@ -19,8 +19,8 @@ var CanvasComponent = (function () {
     CanvasComponent = __decorate([
         core_1.Component({
             selector: "printer-canvas",
-            styles: ["\n    #mainSheet{\n        box-shadow: 5px 5px 10px 0px #cfcfcf;\n        margin:24px;\n        border:solid 1px #cfcfcf;\n        width: 600px;\n        height:840px;\n    }\n    \n    .resize-drag{\n        display: inline-block;\n        background: red;\n    }"],
-            template: "\n    <div id=\"mainSheet\">\n        <div *ngFor=\"let item of items\" class=\"resize-container\">\n            <div class=\"resize-drag\">\n                <textarea [id]=\"item.id\" [name]=\"item.id\" rows=\"10\" cols=\"40\">\n                Test temp \n                </textarea>\n            </div>\n        </div>\n    </div>\n    "
+            styles: ["\n    #mainSheet{\n        box-shadow: 5px 5px 10px 0px #cfcfcf;\n        margin:24px;\n        border:solid 1px #cfcfcf;\n        width: 600px;\n        height:840px;\n    }"],
+            template: "\n    <div id=\"mainSheet\">\n        <div *ngFor=\"let item of items\" class=\"resize-container\">\n            <div class=\"resize-drag\">\n                <div class=\"editable\">\n                    Test temp \n                    </div>\n            </div>\n        </div>\n    </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], CanvasComponent);

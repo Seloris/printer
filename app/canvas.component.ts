@@ -10,19 +10,14 @@ import { Component, Input} from "@angular/core";
         border:solid 1px #cfcfcf;
         width: 600px;
         height:840px;
-    }
-    
-    .resize-drag{
-        display: inline-block;
-        background: red;
     }`],
     template: `
     <div id="mainSheet">
         <div *ngFor="let item of items" class="resize-container">
             <div class="resize-drag">
-                <textarea [id]="item.id" [name]="item.id" rows="10" cols="40">
-                Test temp 
-                </textarea>
+                <div class="editable">
+                    Test temp 
+                    </div>
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@ import { Item } from './item'
 import { ItemListComponent } from './item-list.component';
 import { CanvasComponent } from './canvas.component';
 
-declare var CkEditorRefresh: any;
+declare var TinyMCERefresh: any;
 
 @Component({
   selector: 'my-app',
@@ -35,7 +35,8 @@ export class AppComponent {
     this.items.push(item);
     this.newTitle = "";
     setTimeout(function () {
-      CkEditorRefresh(item.id);
-    }, 1000)
+      // CkEditorRefresh(item.id);
+      TinyMCERefresh();
+    }, 500)
   }
 }
