@@ -16,20 +16,28 @@ var AppComponent = (function () {
     function AppComponent() {
         this.currentId = 0;
         this.items = new Array();
+        this.showGrid = false;
     }
+    AppComponent.prototype.toggleGrid = function () {
+        this.showGrid = !this.showGrid;
+    };
     AppComponent.prototype.toAdd = function () {
+        if (ctEditor.isEditing()) {
+            alert("Not possible in edit mode !");
+            return;
+        }
         var item = new item_1.Item(this.newTitle, "editor" + this.currentId++);
         this.items.push(item);
         this.newTitle = "";
         setTimeout(function () {
-            // CkEditorRefresh(item.id);
-            TinyMCERefresh();
+            ctEditor.init('[data-editable]', 'data-name');
+            ;
         }, 500);
     };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n  <div id=\"framecontent\">\n     <input [(ngModel)]=\"newTitle\" />\n     <input type=\"submit\" (click)=\"toAdd()\"/>\n    <div>\n    salut 1\n    </div>\n     <my-item-list [items]=\"items\"></my-item-list>\n  </div>\n  <div id=\"maincontent\">\n    <printer-canvas [items]=\"items\"></printer-canvas>\n  </div>",
+            template: "\n  <div id=\"framecontent\">\n    <div class=\"addItemPanel\">\n      <h1>Add a panel:</h1>\n      <input [(ngModel)]=\"newTitle\" />\n      <input type=\"submit\" (click)=\"toAdd()\"/>\n    </div>\n     <my-item-list [items]=\"items\"></my-item-list>\n  </div>\n  <div id=\"maincontent\">\n    <div class=\"rightEditor\">\n      <div class=\"showGrid\">\n        <button (click)=\"toggleGrid()\">Toggle Grid</button>\n      </div>\n      <printer-canvas [showGrid]=\"showGrid\" [items]=\"items\"></printer-canvas>\n    </div>\n  </div>",
             directives: [item_list_component_1.ItemListComponent, canvas_component_1.CanvasComponent]
         }), 
         __metadata('design:paramtypes', [])

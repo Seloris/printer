@@ -9,18 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var common_1 = require('@angular/common');
 var CanvasComponent = (function () {
     function CanvasComponent() {
+        this.test = false;
     }
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
     ], CanvasComponent.prototype, "items", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], CanvasComponent.prototype, "showGridd", void 0);
     CanvasComponent = __decorate([
         core_1.Component({
             selector: "printer-canvas",
-            styles: ["\n    #mainSheet{\n        box-shadow: 5px 5px 10px 0px #cfcfcf;\n        margin:24px;\n        border:solid 1px #cfcfcf;\n        width: 600px;\n        height:840px;\n    }"],
-            template: "\n    <div id=\"mainSheet\">\n        <div *ngFor=\"let item of items\" class=\"resize-container\">\n            <div class=\"resize-drag\">\n                <div class=\"editable\">\n                    Test temp \n                    </div>\n            </div>\n        </div>\n    </div>\n    "
+            inputs: ["showGrid"],
+            template: "\n    <div id=\"mainSheet\">\n        <div *ngFor=\"let item of items\">\n               <div [ngClass]=\"{bordered: showGrid}\" class=\"resize-drag\" data-editable [attr.data-name]=\"item.id\" [id]=\"item.id\">\n                    <p>{{item.title}} {{showGrid}} ok</p>\n               </div>\n        </div>\n    </div>\n    ",
+            directives: [common_1.NgClass]
         }), 
         __metadata('design:paramtypes', [])
     ], CanvasComponent);

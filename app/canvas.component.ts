@@ -1,30 +1,28 @@
 import { Item } from "./item";
 import { Component, Input} from "@angular/core";
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: "printer-canvas",
-    styles: [`
-    #mainSheet{
-        box-shadow: 5px 5px 10px 0px #cfcfcf;
-        margin:24px;
-        border:solid 1px #cfcfcf;
-        width: 600px;
-        height:840px;
-    }`],
+    inputs: ["showGrid"],
     template: `
     <div id="mainSheet">
-        <div *ngFor="let item of items" class="resize-container">
-            <div class="resize-drag">
-                <div class="editable">
-                    Test temp 
-                    </div>
-            </div>
+        <div *ngFor="let item of items">
+               <div [ngClass]="{bordered: showGrid}" class="resize-drag" data-editable [attr.data-name]="item.id" [id]="item.id">
+                    <p>{{item.title}} {{showGrid}} ok</p>
+               </div>
         </div>
     </div>
-    `
+    `,
+    directives: [NgClass]
 })
 
 export class CanvasComponent {
+    test = false;
+    
     @Input()
     items: Item[];
+
+    @Input()
+    showGridd: boolean;
 }
