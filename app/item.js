@@ -5,6 +5,8 @@ var Item = (function () {
         this.fontColor = "#000";
         this.font = "Quattrocento Sans";
         this.fontSize = 24;
+        this.backgroundColor = "transparent";
+        this.align = "align-left";
     }
     return Item;
 }());

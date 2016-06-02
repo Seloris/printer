@@ -18,6 +18,9 @@ var ItemEditorComponent = (function () {
         this.onDelete.emit(this.item);
         this.item = null;
     };
+    ItemEditorComponent.prototype.changeAlignment = function (align) {
+        this.item.align = align;
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', item_1.Item)
@@ -29,7 +32,7 @@ var ItemEditorComponent = (function () {
     ItemEditorComponent = __decorate([
         core_1.Component({
             selector: "item-editor",
-            template: "\n    <div *ngIf=\"item\" class=\"editPanel\">\n        <div>\n            <label for=\"fontEdit\"> Police </label>\n            <input class=\"full-width-editor\" type=\"text\" [(ngModel)]=\"item.font\" />\n        </div>\n        <div>\n            <label for=\"fontSizeEdit\"> Taille de la police </label>\n            <input class=\"full-width-editor\" type=\"text\" [(ngModel)]=\"item.fontSize\" />\n        </div>\n        <div>\n            <label for=\"fontColorEdit\"> Couleur </label>\n            <div id=\"colorPreview\" [style.background]=\"item.fontColor\"></div><input type=\"text\" [(ngModel)]=\"item.fontColor\" />\n        </div>\n        <div>\n            <input type=\"submit\" value=\"Delete\" (click)=\"deleteItem()\" class=\"deletePanelButton\"/>\n        </div>\n    </div>"
+            template: "\n    <div *ngIf=\"item\" class=\"editPanel\">\n        <div>\n            <label for=\"fontEdit\"> Police </label>\n            <input class=\"full-width-editor\" type=\"text\" [(ngModel)]=\"item.font\" />\n        </div>\n        <div>\n            <label for=\"fontSizeEdit\"> Taille de la police </label>\n            <input class=\"full-width-editor\" type=\"text\" [(ngModel)]=\"item.fontSize\" />\n        </div>\n        <div>\n            <label for=\"fontColorEdit\"> Couleur de la police </label>\n            <div class=\"colorPreview\" [style.background]=\"item.fontColor\"></div><input type=\"text\" [(ngModel)]=\"item.fontColor\" />\n        </div>\n        <div>\n            <label for=\"backgroundColorEdit\"> Couleur du fond </label>\n            <div class=\"colorPreview\" [style.background]=\"item.backgroundColor\"></div><input type=\"text\" [(ngModel)]=\"item.backgroundColor\" />\n        </div>\n        <div>\n            <label for=\"alignEdit\"> Alignement </label>\n            <div class=\"alignIcons\">\n                <i class=\"fa fa-align-left\" aria-hidden=\"true\" (click)=\"changeAlignment('left')\"></i>\n                <i class=\"fa fa-align-center\" aria-hidden=\"true\" (click)=\"changeAlignment('center')\"></i>\n                <i class=\"fa fa-align-right\" aria-hidden=\"true\" (click)=\"changeAlignment('right')\"></i>\n                <i class=\"fa fa-align-justify\" aria-hidden=\"true\" (click)=\"changeAlignment('justify')\"></i>\n            </div>\n        </div>\n        <div>\n            <input type=\"submit\" value=\"Delete\" (click)=\"deleteItem()\" class=\"deletePanelButton\"/>\n        </div>\n    </div>"
         }), 
         __metadata('design:paramtypes', [])
     ], ItemEditorComponent);

@@ -40,7 +40,7 @@ var CanvasComponent = (function () {
     CanvasComponent = __decorate([
         core_1.Component({
             selector: "printer-canvas",
-            template: "\n    <div id=\"mainSheet\">\n        <div \n            *ngFor=\"let item of items\" [class.selected]=\"item == selectedItem\"\n            (click)=\"selectItem(item)\" \n            class=\"resize-drag item\" \n            [id]=\"item.id\"\n            contentEditable=\"true\"\n            [style.color]=\"item.fontColor\"\n            [style.font-family]=\"item.font\"\n            [style.font-size]=\"item.fontSize\">\n            Lorem ipsum\n       </div>\n    </div>\n    ",
+            template: "\n    <div id=\"mainSheet\">\n        <div \n            *ngFor=\"let item of items\" [class.selected]=\"item == selectedItem\"\n            (click)=\"selectItem(item)\" \n            class=\"resize-drag item\" \n            [id]=\"item.id\"\n            contentEditable=\"true\"\n            [style.color]=\"item.fontColor\"\n            [style.font-family]=\"item.font\"\n            [style.font-size]=\"item.fontSize\"\n            [style.background-color]=\"item.backgroundColor\"\n            [style.text-align]=\"item.align\">\n            Lorem ipsum\n       </div>\n    </div>\n    ",
             directives: [common_1.NgClass]
         }), 
         __metadata('design:paramtypes', [])

@@ -130,7 +130,7 @@ color: #f0f0f0;
   margin:4px;
 }
 
-#colorPreview{
+.colorPreview{
     width: 36px;
     height: 36px;
     margin: 4px 2px;
@@ -147,4 +147,10 @@ color: #f0f0f0;
   margin:12px 0 8px 24px;
   background:#FF2B22;
   border: none;
+}
+
+.alignIcons i{
+  width:24px;
+  height:24px;
+  margin:2px;
 }

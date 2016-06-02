@@ -5,6 +5,8 @@ export class Item {
     public fontColor: string;
     public fontSize: number;
     public font: string;
+    public backgroundColor: string;
+    public align: string;
    
     constructor(id: number) {
         this.id = id;
@@ -12,5 +14,7 @@ export class Item {
         this.fontColor = "#000";
         this.font = "Quattrocento Sans";
         this.fontSize = 24;
+        this.backgroundColor = "transparent";
+        this.align = "align-left";
     }
 }

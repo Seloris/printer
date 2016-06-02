@@ -14,7 +14,9 @@ import { NgClass } from '@angular/common';
             contentEditable="true"
             [style.color]="item.fontColor"
             [style.font-family]="item.font"
-            [style.font-size]="item.fontSize">
+            [style.font-size]="item.fontSize"
+            [style.background-color]="item.backgroundColor"
+            [style.text-align]="item.align">
             Lorem ipsum
        </div>
     </div>
