@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var item_1 = require('./item');
-var item_list_component_1 = require('./item-list.component');
+var item_editor_component_1 = require('./item-editor.component');
 var canvas_component_1 = require('./canvas.component');
 var AppComponent = (function () {
     function AppComponent() {
@@ -18,27 +18,21 @@ var AppComponent = (function () {
         this.items = new Array();
         this.showGrid = false;
     }
-    AppComponent.prototype.toggleGrid = function () {
-        this.showGrid = !this.showGrid;
-    };
     AppComponent.prototype.toAdd = function () {
-        if (ctEditor.isEditing()) {
-            alert("Not possible in edit mode !");
-            return;
-        }
-        var item = new item_1.Item(this.newTitle, "editor" + this.currentId++);
+        var item = new item_1.Item(this.currentId++);
         this.items.push(item);
-        this.newTitle = "";
-        setTimeout(function () {
-            ctEditor.init('[data-editable]', 'data-name');
-            ;
-        }, 500);
+    };
+    AppComponent.prototype.onDelete = function (itemToDelete) {
+        console.log(itemToDelete);
+        var index = this.items.indexOf(itemToDelete);
+        console.log(index);
+        this.items.splice(index, 1);
     };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n  <div id=\"framecontent\">\n    <div class=\"addItemPanel\">\n      <h1>Add a panel:</h1>\n      <input [(ngModel)]=\"newTitle\" />\n      <input type=\"submit\" (click)=\"toAdd()\"/>\n    </div>\n     <my-item-list [items]=\"items\"></my-item-list>\n  </div>\n  <div id=\"maincontent\">\n    <div class=\"rightEditor\">\n      <div class=\"showGrid\">\n        <button (click)=\"toggleGrid()\">Toggle Grid</button>\n      </div>\n      <printer-canvas [showGrid]=\"showGrid\" [items]=\"items\"></printer-canvas>\n    </div>\n  </div>",
-            directives: [item_list_component_1.ItemListComponent, canvas_component_1.CanvasComponent]
+            template: "\n  <div id=\"leftMenu\">\n    <div class=\"editHeader\">\n    EDITION\n    </div>\n      <item-editor \n        [item]=\"selectedItem\"\n        (onDelete)=\"onDelete($event)\">\n        </item-editor>\n  </div>\n  <div id=\"mainContent\">\n    <div class=\"rightEditor\">\n      <input type=\"submit\" value=\"Add a Tag\" (click)=\"toAdd()\" class=\"addPanelButton\"/>\n      <printer-canvas \n          [showGrid]=\"showGrid\" \n          [items]=\"items\" \n          [(selectedItem)]=\"selectedItem\">\n      </printer-canvas>\n    </div>\n  </div>",
+            directives: [item_editor_component_1.ItemEditorComponent, canvas_component_1.CanvasComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

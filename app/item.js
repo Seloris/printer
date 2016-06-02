@@ -1,8 +1,10 @@
 "use strict";
 var Item = (function () {
-    function Item(title, id) {
-        this.title = title;
+    function Item(id) {
         this.id = id;
+        this.fontColor = "#000";
+        this.font = "Quattrocento Sans";
+        this.fontSize = 24;
     }
     return Item;
 }());

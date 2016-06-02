@@ -1,57 +1,53 @@
-import { Component } from '@angular/core';
+import { Component  } from '@angular/core';
 import { Item } from './item'
-import { ItemListComponent } from './item-list.component';
+import { ItemEditorComponent } from './item-editor.component';
 import { CanvasComponent } from './canvas.component';
 
-declare var ctEditor: any;
 
 @Component({
   selector: 'my-app',
   template: `
-  <div id="framecontent">
-    <div class="addItemPanel">
-      <h1>Add a panel:</h1>
-      <input [(ngModel)]="newTitle" />
-      <input type="submit" (click)="toAdd()"/>
+  <div id="leftMenu">
+    <div class="editHeader">
+    EDITION
     </div>
-     <my-item-list [items]="items"></my-item-list>
+      <item-editor 
+        [item]="selectedItem"
+        (onDelete)="onDelete($event)">
+        </item-editor>
   </div>
-  <div id="maincontent">
+  <div id="mainContent">
     <div class="rightEditor">
-      <div class="showGrid">
-        <button (click)="toggleGrid()">Toggle Grid</button>
-      </div>
-      <printer-canvas [showGrid]="showGrid" [items]="items"></printer-canvas>
+      <input type="submit" value="Add a Tag" (click)="toAdd()" class="addPanelButton"/>
+      <printer-canvas 
+          [showGrid]="showGrid" 
+          [items]="items" 
+          [(selectedItem)]="selectedItem">
+      </printer-canvas>
     </div>
   </div>`,
-  directives: [ItemListComponent, CanvasComponent]
+  directives: [ItemEditorComponent, CanvasComponent]
 })
 
 export class AppComponent {
   currentId = 0;
-  newTitle: string;
   items = new Array<Item>();
+  selectedItem: Item;
 
   showGrid = false;
 
   constructor() {
   }
 
-  toggleGrid() {
-    this.showGrid = !this.showGrid;
+  toAdd() {
+    var item = new Item(this.currentId++);
+    this.items.push(item);
   }
 
-  toAdd() {
-    if (ctEditor.isEditing()) {
-      alert("Not possible in edit mode !");
-      return;
-    }
-
-    var item = new Item(this.newTitle, "editor" + this.currentId++);
-    this.items.push(item);
-    this.newTitle = "";
-    setTimeout(function () {
-      ctEditor.init('[data-editable]', 'data-name');;
-    }, 500)
+  onDelete(itemToDelete: Item) {
+    console.log(itemToDelete);
+    var index: number = this.items.indexOf(itemToDelete);
+    console.log(index);
+    this.items.splice(index, 1);
   }
 }

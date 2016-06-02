@@ -13,6 +13,7 @@
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
   }
+  
 
 interact('.resize-drag')
   .draggable({

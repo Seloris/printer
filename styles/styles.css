@@ -1,15 +1,14 @@
 body{
-font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
-margin: 0;
-padding: 0;
-border: 0;
-overflow: hidden;
-height: 100%; 
-max-height: 100%; 
+  font-family: 'Quattrocento Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  height: 100%; 
+  max-height: 100%; 
 }
 
 h1 {
-	font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 	font-size: 24px;
 	font-style: normal;
 	font-variant: normal;
@@ -18,7 +17,6 @@ h1 {
 }
 
 h3 {
-	font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 	font-size: 14px;
 	font-style: normal;
 	font-variant: normal;
@@ -27,7 +25,6 @@ h3 {
 }
 
 p {
-	font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 	font-size: 14px;
 	font-style: normal;
 	font-variant: normal;
@@ -35,19 +32,7 @@ p {
 	line-height: 20px;
 }
 
-#framecontent{
-position: absolute;
-top: 0;
-bottom: 0; 
-left: 0;
-width: 300px; /*Width of frame div*/
-height: 100%;
-overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
-background: steelblue;
-color: white;
-}
-
-#maincontent{
+#mainContent{
 position: fixed;
 top: 0; 
 left: 300px; /*Set left value to WidthOfFrameDiv*/
@@ -55,15 +40,22 @@ right: 0;
 bottom: 0;
 overflow: auto; 
 background: #f1f1f1;
+border-left:solid 1px rgba(19,28,35,0.6);
+}
+
+/* right */
+.addPanelButton {
+    box-shadow: 2px 2px 2px 0px #cfcfcf;
+	font-family: 'Quattrocento Sans', sans-serif, FontAwesome;
+  color: white;
+  padding:10px 20px;
+  margin:12px 0 8px 24px;
+  background:#ff742f;
+  border: none;
 }
 
 .rightEditor{
   width:600px;
-}
-
-.showGrid{
-  float:right;
-  margin-top:48px;
 }
 
 #mainSheet{
@@ -78,25 +70,81 @@ background: #f1f1f1;
 .resize-drag {       
   position:absolute;
   display: inline-block;
-  color: black;
   font-size: 20px;
   font-family: sans-serif;
   margin: 30px 20px;
   width: 120px;
-  /* This makes things *much* easier */
   box-sizing: border-box;
 }
 
-.bordered {
-  border: dashed 1px #c1c1c1;
+.item{
+  display:inline-block;
+  background: transparent;
+  resize: none;
+  overflow: hidden;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
-.ct-widget.ct-ignition {
-    left: 316px;
-    position: fixed;
-    top: 16px;
+.selected{
+  border: solid 1px lightslategray;
 }
 
-.addItemPanel{
-  margin: 12px 24px;
+/* left */
+
+#leftMenu{
+position: absolute;
+top: 0;
+bottom: 0; 
+left: 0;
+width: 300px;
+height: 100%;
+overflow: hidden;
+background: #f7f7f7;
+}
+
+.editHeader{
+background:#131c23;
+font-weight: 600;
+padding: 24px;
+color: #f0f0f0;
+}
+
+.editPanel{
+  margin:12px;
+}
+
+.editPanel input{
+    height: 40px !important;
+    margin-right: 30px;
+}
+
+.editPanel input.full-width-editor{
+    width: 250px;
+}
+
+.editPanel label, .editPanel input {
+  display: block;
+  margin:4px;
+}
+
+#colorPreview{
+    width: 36px;
+    height: 36px;
+    margin: 4px 2px;
+    float: left;
+    border: solid 1px #131c23;
+    border-radius: 2px;
+}
+
+.deletePanelButton {
+    box-shadow: 2px 2px 2px 0px #cfcfcf;
+	font-family: 'Quattrocento Sans', sans-serif, FontAwesome;
+  color: white;
+  padding:10px 20px;
+  margin:12px 0 8px 24px;
+  background:#FF2B22;
+  border: none;
 }

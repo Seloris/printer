@@ -1,10 +1,16 @@
 export class Item {
     
-    public id: string;
-    public title: string;
+    public id: number;
+    public text: string;
+    public fontColor: string;
+    public fontSize: number;
+    public font: string;
    
-    constructor(title : string, id: string) {
-        this.title = title;
+    constructor(id: number) {
         this.id = id;
+        
+        this.fontColor = "#000";
+        this.font = "Quattrocento Sans";
+        this.fontSize = 24;
     }
 }
