@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter} from "@angular/core";
-import { Item } from "./item";
+import { Item } from "./models/item";
 
 @Component({
     selector:"item-editor",
@@ -15,11 +15,13 @@ import { Item } from "./item";
         </div>
         <div>
             <label for="fontColorEdit"> Couleur de la police </label>
-            <div class="colorPreview" [style.background]="item.fontColor"></div><input type="text" [(ngModel)]="item.fontColor" />
+            <div class="colorPreview" [style.background]="item.fontColor"></div>
+            <input class="color-editor" type="text" [(ngModel)]="item.fontColor" />
         </div>
         <div>
             <label for="backgroundColorEdit"> Couleur du fond </label>
-            <div class="colorPreview" [style.background]="item.backgroundColor"></div><input type="text" [(ngModel)]="item.backgroundColor" />
+            <div class="colorPreview" [style.background]="item.backgroundColor"></div>
+            <input class="color-editor" type="text" [(ngModel)]="item.backgroundColor" />
         </div>
         <div>
             <label for="alignEdit"> Alignement </label>

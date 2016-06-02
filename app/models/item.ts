@@ -1,5 +1,7 @@
+import { TagType } from './tagType';
+
 export class Item {
-    
+
     public id: number;
     public text: string;
     public fontColor: string;
@@ -7,10 +9,11 @@ export class Item {
     public font: string;
     public backgroundColor: string;
     public align: string;
-   
-    constructor(id: number) {
+    public tagType: TagType;
+
+    constructor(id: number, tagType: TagType) {
         this.id = id;
-        
+        this.tagType = tagType;
         this.fontColor = "#000";
         this.font = "Quattrocento Sans";
         this.fontSize = 24;

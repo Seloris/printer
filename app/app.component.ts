@@ -1,7 +1,8 @@
 import { Component  } from '@angular/core';
-import { Item } from './item'
+import { Item } from './models/item'
 import { ItemEditorComponent } from './item-editor.component';
 import { CanvasComponent } from './canvas.component';
+import { TagSelectorComponent } from './tag-selector.component'
 
 
 @Component({
@@ -17,16 +18,15 @@ import { CanvasComponent } from './canvas.component';
         </item-editor>
   </div>
   <div id="mainContent">
-    <div class="rightEditor">
-      <input type="submit" value="Add a Tag" (click)="toAdd()" class="addPanelButton"/>
       <printer-canvas 
           [showGrid]="showGrid" 
           [items]="items" 
           [(selectedItem)]="selectedItem">
       </printer-canvas>
-    </div>
+      <tag-selector>
+      </tag-selector>
   </div>`,
-  directives: [ItemEditorComponent, CanvasComponent]
+  directives: [ItemEditorComponent, CanvasComponent, TagSelectorComponent]
 })
 
 export class AppComponent {
@@ -37,11 +37,6 @@ export class AppComponent {
   showGrid = false;
 
   constructor() {
-  }
-
-  toAdd() {
-    var item = new Item(this.currentId++);
-    this.items.push(item);
   }
 
   onDelete(itemToDelete: Item) {

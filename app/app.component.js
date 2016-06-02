@@ -9,19 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var item_1 = require('./item');
 var item_editor_component_1 = require('./item-editor.component');
 var canvas_component_1 = require('./canvas.component');
+var tag_selector_component_1 = require('./tag-selector.component');
 var AppComponent = (function () {
     function AppComponent() {
         this.currentId = 0;
         this.items = new Array();
         this.showGrid = false;
     }
-    AppComponent.prototype.toAdd = function () {
-        var item = new item_1.Item(this.currentId++);
-        this.items.push(item);
-    };
     AppComponent.prototype.onDelete = function (itemToDelete) {
         console.log(itemToDelete);
         var index = this.items.indexOf(itemToDelete);
@@ -31,8 +27,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n  <div id=\"leftMenu\">\n    <div class=\"editHeader\">\n    EDITION\n    </div>\n      <item-editor \n        [item]=\"selectedItem\"\n        (onDelete)=\"onDelete($event)\">\n        </item-editor>\n  </div>\n  <div id=\"mainContent\">\n    <div class=\"rightEditor\">\n      <input type=\"submit\" value=\"Add a Tag\" (click)=\"toAdd()\" class=\"addPanelButton\"/>\n      <printer-canvas \n          [showGrid]=\"showGrid\" \n          [items]=\"items\" \n          [(selectedItem)]=\"selectedItem\">\n      </printer-canvas>\n    </div>\n  </div>",
-            directives: [item_editor_component_1.ItemEditorComponent, canvas_component_1.CanvasComponent]
+            template: "\n  <div id=\"leftMenu\">\n    <div class=\"editHeader\">\n    EDITION\n    </div>\n      <item-editor \n        [item]=\"selectedItem\"\n        (onDelete)=\"onDelete($event)\">\n        </item-editor>\n  </div>\n  <div id=\"mainContent\">\n      <printer-canvas \n          [showGrid]=\"showGrid\" \n          [items]=\"items\" \n          [(selectedItem)]=\"selectedItem\">\n      </printer-canvas>\n      <tag-selector>\n      </tag-selector>\n  </div>",
+            directives: [item_editor_component_1.ItemEditorComponent, canvas_component_1.CanvasComponent, tag_selector_component_1.TagSelectorComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

@@ -1,7 +1,8 @@
 "use strict";
 var Item = (function () {
-    function Item(id) {
+    function Item(id, tagType) {
         this.id = id;
+        this.tagType = tagType;
         this.fontColor = "#000";
         this.font = "Quattrocento Sans";
         this.fontSize = 24;

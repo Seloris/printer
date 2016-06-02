@@ -1,4 +1,4 @@
-import { Item } from "./item";
+import { Item } from "./models/item";
 import { Component, Input, Output, EventEmitter} from "@angular/core";
 import { NgClass } from '@angular/common';
 
@@ -29,7 +29,6 @@ export class CanvasComponent {
     selectedItemChange: EventEmitter<Item> = new EventEmitter<Item>();
     @Input()
     selectedItem: Item;
-
 
     @Input()
     items: Item[];
