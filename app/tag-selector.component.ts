@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { TagType } from "./models/tagType";
 import { TagService } from "./services/tag.service"
 import { AvalaibleTag } from "./models/avalaibleTag";
@@ -7,12 +7,13 @@ import { AvalaibleTag } from "./models/avalaibleTag";
     selector:"tag-selector",
     template:`
     <div class="tagSelectorContainer">
-        <div>Un texte ici</div>
+        <p class="tagTextHeader">Drag and drop each element on the badge editor</p>
+        <hr />
+        <p class="tagHeader">TAGS</p>
         <div *ngFor="let tag of tags" class="tagContainer">
             <div (click)="addTag(tag.tagType)" class="box"></div>
              <p>{{tag.displayName}}</p>
         </div>
-        <div>TAGS</div>
     </div>
     `,
     providers: [TagService]
@@ -21,12 +22,15 @@ import { AvalaibleTag } from "./models/avalaibleTag";
 export class TagSelectorComponent implements OnInit{
     tags : AvalaibleTag[];
     
+    @Output()
+    onAddTag = new EventEmitter<TagType>();
+    
     constructor(private tagService:TagService){
     }
     
     addTag(tagType:TagType)
     {
-        alert(tagType);
+        this.onAddTag.emit(tagType);
     }
     
     getTags(){

@@ -11,15 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var item_1 = require("./models/item");
 var core_1 = require("@angular/core");
 var common_1 = require('@angular/common');
-var CanvasComponent = (function () {
-    function CanvasComponent() {
+var BadgeEditorComponent = (function () {
+    function BadgeEditorComponent() {
         this.selectedItemChange = new core_1.EventEmitter();
     }
-    CanvasComponent.prototype.selectItem = function (item) {
+    BadgeEditorComponent.prototype.selectItem = function (item) {
         this.selectedItem = item;
         this.selectedItemChange.emit(this.selectedItem);
     };
-    CanvasComponent.prototype.deleteItem = function (item) {
+    BadgeEditorComponent.prototype.deleteItem = function (item) {
         var index = this.items.indexOf(item, 0);
         if (index > -1) {
             this.items.splice(index, 1);
@@ -28,24 +28,24 @@ var CanvasComponent = (function () {
     __decorate([
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)
-    ], CanvasComponent.prototype, "selectedItemChange", void 0);
+    ], BadgeEditorComponent.prototype, "selectedItemChange", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', item_1.Item)
-    ], CanvasComponent.prototype, "selectedItem", void 0);
+    ], BadgeEditorComponent.prototype, "selectedItem", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
-    ], CanvasComponent.prototype, "items", void 0);
-    CanvasComponent = __decorate([
+    ], BadgeEditorComponent.prototype, "items", void 0);
+    BadgeEditorComponent = __decorate([
         core_1.Component({
-            selector: "printer-canvas",
-            template: "\n    <div id=\"mainSheet\">\n        <div \n            *ngFor=\"let item of items\" [class.selected]=\"item == selectedItem\"\n            (click)=\"selectItem(item)\" \n            class=\"resize-drag item\" \n            [id]=\"item.id\"\n            contentEditable=\"true\"\n            [style.color]=\"item.fontColor\"\n            [style.font-family]=\"item.font\"\n            [style.font-size]=\"item.fontSize\"\n            [style.background-color]=\"item.backgroundColor\"\n            [style.text-align]=\"item.align\">\n            Lorem ipsum\n       </div>\n    </div>\n    ",
+            selector: "badge-editor",
+            template: "\n    <div class=\"badgeEditor-wrapper\">\n        <div class=\"badgeEditor\">\n            <div \n                *ngFor=\"let item of items\" [class.selected]=\"item == selectedItem\"\n                (click)=\"selectItem(item)\" \n                class=\"resize-drag item\" \n                [id]=\"item.id\"\n                contentEditable=\"true\"\n                [style.color]=\"item.fontColor\"\n                [style.font-family]=\"item.font\"\n                [style.font-size]=\"item.fontSize\"\n                [style.background-color]=\"item.backgroundColor\"\n                [style.text-align]=\"item.align\">\n                {{item.text}}\n            </div>\n        </div>\n    </div>\n    ",
             directives: [common_1.NgClass]
         }), 
         __metadata('design:paramtypes', [])
-    ], CanvasComponent);
-    return CanvasComponent;
+    ], BadgeEditorComponent);
+    return BadgeEditorComponent;
 }());
-exports.CanvasComponent = CanvasComponent;
-//# sourceMappingURL=canvas.component.js.map
+exports.BadgeEditorComponent = BadgeEditorComponent;
+//# sourceMappingURL=badge-editor.component.js.map

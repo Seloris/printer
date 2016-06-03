@@ -11,13 +11,14 @@ export class Item {
     public align: string;
     public tagType: TagType;
 
-    constructor(id: number, tagType: TagType) {
+    constructor(id: number, tagType: TagType, text :string) {
         this.id = id;
         this.tagType = tagType;
         this.fontColor = "#000";
         this.font = "Quattrocento Sans";
-        this.fontSize = 24;
+        this.fontSize = 22;
         this.backgroundColor = "transparent";
         this.align = "align-left";
+        this.text = text;
     }
 }

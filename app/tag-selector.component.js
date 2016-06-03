@@ -13,9 +13,10 @@ var tag_service_1 = require("./services/tag.service");
 var TagSelectorComponent = (function () {
     function TagSelectorComponent(tagService) {
         this.tagService = tagService;
+        this.onAddTag = new core_1.EventEmitter();
     }
     TagSelectorComponent.prototype.addTag = function (tagType) {
-        alert(tagType);
+        this.onAddTag.emit(tagType);
     };
     TagSelectorComponent.prototype.getTags = function () {
         var _this = this;
@@ -24,10 +25,14 @@ var TagSelectorComponent = (function () {
     TagSelectorComponent.prototype.ngOnInit = function () {
         this.getTags();
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], TagSelectorComponent.prototype, "onAddTag", void 0);
     TagSelectorComponent = __decorate([
         core_1.Component({
             selector: "tag-selector",
-            template: "\n    <div class=\"tagSelectorContainer\">\n        <div>Un texte ici</div>\n        <div *ngFor=\"let tag of tags\" class=\"tagContainer\">\n            <div (click)=\"addTag(tag.tagType)\" class=\"box\"></div>\n             <p>{{tag.displayName}}</p>\n        </div>\n        <div>TAGS</div>\n    </div>\n    ",
+            template: "\n    <div class=\"tagSelectorContainer\">\n        <p class=\"tagTextHeader\">Drag and drop each element on the badge editor</p>\n        <hr />\n        <p class=\"tagHeader\">TAGS</p>\n        <div *ngFor=\"let tag of tags\" class=\"tagContainer\">\n            <div (click)=\"addTag(tag.tagType)\" class=\"box\"></div>\n             <p>{{tag.displayName}}</p>\n        </div>\n    </div>\n    ",
             providers: [tag_service_1.TagService]
         }), 
         __metadata('design:paramtypes', [tag_service_1.TagService])
